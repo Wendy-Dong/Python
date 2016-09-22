@@ -1,0 +1,48 @@
+#find all ID,idx,rollback idx
+#according to rollback idx search the mapping ID if it has
+import re
+outerList=list()
+idxList=list()
+with open("C:\Python34\log.txt") as logFile:
+    #aList to store all rollback idx
+    rollbackList=list()
+    for line in logFile:
+        if line.startswith('-Transaction'):
+            rule=re.compile('\d+')
+            origList=re.findall(rule,line)
+            origStr=''.join(origList)
+            rollbackList.append(origStr)
+    #print (aList)
+    #set file back to the beginning
+    logFile.seek(0)
+    startLine='------------------------------------Start to check condition-------------------------------'
+    #List of each log block
+    blockLines=logFile.read().split(startLine) 
+    #check each block 
+    for block in blockLines: 
+        innerList=list()
+        rule1=re.compile('ID\s\d+') 
+        IDList=re.findall(rule1,block)          
+        IDStr=''.join(IDList)
+        finalID=IDStr[3:]
+        rule2=re.compile('value\s\(idx=\d+')
+        idxList=re.findall(rule2,block)
+        idxStr=''.join(idxList,)
+        finalidx=idxStr[11:]
+        #******Both insert and append are OK******
+        #innerList.insert(0,finalID)
+        #innerList.insert(1,finalidx)
+        innerList.append(finalID)
+        innerList.append(finalidx)        
+        #print (innerList)
+        #outerList.insert(0,innerList)
+        outerList.append(innerList)
+        #print (outerList)
+    for i in rollbackList:
+        for n in outerList:
+            bList=n
+            if bList[1]==i:
+               print ('idx=',bList[0],'->ID=',bList[1])
+            else:
+               print ('idx=',bList[0],'has no mapping ID')
+    
