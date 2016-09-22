@@ -1,0 +1,8 @@
+#Create nested list, and insert element into the list
+aList = [123, 'xyz', 'zara', 'abc']
+
+aList.insert(0,2009)
+
+aList.insert(0,'insert')
+
+print ("Final List : ", aList)
