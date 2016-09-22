@@ -1,0 +1,43 @@
+transaction risk check H1400000879
+Obtained profile
+------------------------------------Start to check condition-------------------------------
+- Incoming rule record: CAPC(ID 8615) GrossLimit:76000000 NetLimit:NONE
+- CombinePoscMode=false,
+- In Target:false Force Update:false
+- Updated TRANSACTION bucket value (idx=5172):netDouble(false)= 0.0(0.0)[0.0] netBuyDouble(false)= 0.0(0.0)[0.0] 
+
+netSellDouble(false)= 0.0(0.0)[0.0] frossDouble(true)= 637.890708015
+------------------------------------Start to check condition-------------------------------
+- Incoming rule record: SCNL(ID 8578)
+- CombinePoscMode=false,
+- Updated TRANSACTION bucket value (idx=8899):netDouble(false)= 1.0(0.0)[0.0] netBuyDouble(false)= 0.10(0.0)[0.0] 
+
+netSellDouble(false)= 0.0(0.0)
+------------------------------------Start to check condition-------------------------------
+- Incoming rule record: SCNL(ID 8577)
+- CombinePoscMode=false,
+- Updated TRANSACTION bucket value (idx=8278):netDouble(false)= 3464.0(0.0)[0.0] netBuyDouble(false)= 0.0(0.0)[0.0] 
+
+netSellDouble(false)= 0.0(0.0)
+------------------------------------Start to check condition-------------------------------
+- Incoming rule record: SNL(ID 8732)
+- CombinePoscMode=false,
+- Updated TRANSACTION bucket value (idx=5016)
+------------------------------------Start to check condition-------------------------------
+- Incoming rule record: MCAPC(ID 8732)
+- CombinePoscMode=false
+- In Target:false Force
+------------------------------------Start to check condition-------------------------------
+- Incoming rule record: MCAPC(ID 8577)
+- CombinePoscMode=false
+- In Target:false Force
+- RULE FAILED on gross double: 1704000.0 > 80000.0
+------------------------------------Start to check condition-------------------------------
+- Incoming rule record: MCAPC(ID 4410)
+- CombinePoscMode=false
+- In Target:false Force
+- Updated TRANSACTION bucket value (idx=7643)
+-Transaction rollback (idx=7643): netBuyDouble
+-Transaction rollback (idx=3464): netBuyDouble
+-Transaction rollback (idx=8278): netBuyDouble
+-------------------------------------------------------------------------------------------
