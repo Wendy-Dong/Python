@@ -1,0 +1,25 @@
+#Find all ID and print ID which appears more than once
+import re
+with open("C:\Python34\log.txt") as logFile:
+#logFile=open("C:\Python34\log.txt")
+#line=logFile.readline()
+    aList=list()
+    for line in logFile:
+        rule=re.compile('[A-Z]+\(ID\s\d+\)')
+        origList=re.findall(rule,line)
+        print(origList)
+        if origList:
+            origStr=''.join(origList)
+            i=origStr.find('(')
+            finalKey=origStr[:i]
+            print(finalKey)
+            aList.append(finalKey)
+    print (aList)
+    mySet=set(aList)
+    for item in mySet:
+        c=aList.count(item)
+        if c>1:
+            print (item)
+#logFile.close()
+
+    
