@@ -1,0 +1,45 @@
+#Create XML file and input ID and idx as it's element 
+import re
+from xml.dom.minidom import Document
+
+with open("C:\Python34\log.txt") as logFile:
+    startLine='------------------------------------Start to check condition-------------------------------'
+    blockLines=logFile.read().split(startLine)  #List of each log block
+    doc=Document()
+    log=doc.createElement('Log')
+    doc.appendChild(log)
+    for block in blockLines:                    #check each block
+        #Search ID
+        rule1=re.compile('ID\s\d+')
+        IDList=re.findall(rule1,block)
+        #when IDList is not null, create element in xml
+        #while IDList:
+        IDStr=''.join(IDList)
+        finalID=IDStr[3:]
+        #Create logItem
+        logItem=doc.createElement('logItem')
+        log.appendChild(logItem)
+            #Create logID
+        logID=doc.createElement('logID')
+        logItem.appendChild(logID)
+        logID_text=doc.createTextNode(finalID)
+        logID.appendChild(logID_text)
+        #Search idx
+        rule2=re.compile('idx=\d+') 
+        idxList=re.findall(rule2,block)
+        if len(idxList)>1
+            idxStr[0]=''.join(idxList)
+            finalIdx=idxStr[4:]
+            #Create logIdx
+            logIdx=doc.createElement('logIdx')
+            logItem.appendChild(logIdx)
+            logIdx_text=doc.createTextNode(finalIdx)
+            logIdx.appendChild(logIdx_text)
+
+#
+f=open('D:\DB\writeLog.xml','w')
+#with open('D:\DB\writeLog.xml','w') as f
+#indent can be none or a blank space or any other charcter
+f.write(doc.toprettyxml(indent='\t'))
+f.close()
+
