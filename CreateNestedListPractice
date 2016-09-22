@@ -1,0 +1,28 @@
+#Create nested list and add element into it. Use insert() but not append
+import re
+outerList=list()
+with open("C:\Python34\log.txt") as logFile:
+    startLine='------------------------------------Start to check condition-------------------------------'
+    #List of each log block
+    blockLines=logFile.read().split(startLine) 
+    #check each block 
+    for block in blockLines: 
+        #innerList must be initiated in each for loop
+        #should not be global list
+        innerList=list()
+        rule1=re.compile('ID\s\d+') 
+        IDList=re.findall(rule1,block)          
+        IDStr=''.join(IDList)
+        finalID=IDStr[3:]
+        rule2=re.compile('idx=\d+')
+        idxList=re.findall(rule2,block)
+        #check if multiple idx exits or not
+        if len(idxList)>1:
+            idxList=idxList[0] 
+        idxStr=''.join(idxList)
+        finalidx=idxStr[4:]
+        innerList.insert(0,finalID)
+        innerList.insert(1,finalidx)
+        outerList.insert(0,innerList)
+    print (outerList)
+    
