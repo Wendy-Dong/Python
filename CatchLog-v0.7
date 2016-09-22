@@ -1,0 +1,28 @@
+#find all value is not null and print ID,idx and value
+import re
+
+with open("C:\Python34\log.txt") as logFile:
+    startLine='------------------------------------Start to check condition-------------------------------'
+    #List of each log block
+    blockLines=logFile.read().split(startLine)
+    #check each block
+    for block in blockLines:
+        #get ID
+        rule1=re.compile('ID\s\d+')
+        IDList=re.findall(rule1,block)
+        IDStr=''.join(IDList)
+        finalID=IDStr[3:]
+        #get idx
+        rule2=re.compile('idx=\d+')
+        idxList=re.findall(rule2,block)
+        idxStr=''.join(idxList)
+        finalidx=idxStr[4:]
+        #get value
+        rule2=re.compile('idx=\d+')
+        idxList=re.findall(rule2,block)
+        idxStr=''.join(idxList)
+        finalidx=idxStr[4:]
+        #print (finalID)
+        #print (compID)
+        if (finalidx==''):
+            print (finalID)
