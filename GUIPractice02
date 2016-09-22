@@ -1,0 +1,36 @@
+#tkinter is for Python 3.X and Tkinter for 2.X
+from tkinter import *
+
+root=Tk()
+frame=Frame(root)
+frame.pack()
+
+#bottomframe=Frame(root)
+#bottomframe.pack(side=BOTTOM)
+
+nameLabel=Label(frame,text="user : ")
+nameLabel.grid(row=0,sticky="w")
+
+nameText=Entry(frame,bg="white")
+nameText.grid(row=0,column=1, columnspan=2)
+
+pwdLabel=Label(frame,text="password : ")
+pwdLabel.grid(row=1,sticky="w")
+
+pwdText=Entry(frame,bg="white")
+pwdText.grid(row=1,column=1,columnspan=2)
+
+blankLabel=Label(frame,text=" ")
+blankLabel.grid(row=3,sticky="w")
+
+editButton=Button(frame,text="Edit")
+editButton.grid(row=4,column=0)
+
+saveButton=Button(frame,text="Save")
+saveButton.grid(row=4,column=1)
+
+quitButton=Button(frame,text="Quit")
+quitButton.grid(row=4,column=2)
+
+root.mainloop()
+#root.destroy()
